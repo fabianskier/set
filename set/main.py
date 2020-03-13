@@ -9,7 +9,7 @@ def menu():
     print("************MENU PRINCIPAL**************")
     opcion = input(
     """
-1: Opcion 1
+1: Get RUC files
 2: Opcion 2
 3: Opcion 3
 q: Salir
@@ -20,22 +20,21 @@ Ingresar opcion: """)
         os.system('clear')
         setting = Setting()
         utils = Utils()
-        utils.download(setting.url, setting.root+setting.slash+setting.mode[0]+setting.slash)
-        utils.extract(setting.root+setting.slash+setting.mode[0]+setting.slash, setting.root+setting.slash+setting.mode[1]+setting.slash)
+        utils.download(setting.url, setting.root + '/tmp/')
+        utils.extract(setting.root + '/tmp/', setting.root + '/tmp/')
         menu()
     elif opcion == "2":
         os.system('clear')
-        setpy = SetPy()
-        p.invoice_to_text('2020/MARZO/test.jpg')
         menu()
     elif opcion == "3":
         os.system('clear')
         setpy = SetPy()
         setting = Setting()
+        print('RUC,RAZON SOCIAL,TIMBRADO,DOCUMENTO,FECHA,TOTAL')
         for month in range(1, 12):
-            directory = setting.root + setting.facturas + setting.periodo + '/' + ('%02d' % month)
+            directory = setting.root + setting.receipts + setting.periodo + '/' + ('%02d' % month)
             if os.path.exists(directory):
-                files = os.listdir(setting.root + setting.facturas + setting.periodo + '/' + ('%02d' % month))
+                files = os.listdir(setting.root + setting.receipts + setting.periodo + '/' + ('%02d' % month))
                 for file in files:
                     if fnmatch(file, '*.jpg'):
                         setpy.invoice_to_text(directory + '/' + file)
