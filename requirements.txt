@@ -1,0 +1,4 @@
+pytesseract
+#scikit-image
+python-dateutil
+requests

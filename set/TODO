@@ -1,0 +1,6 @@
+Problemas
+1. Cuando existen mas de 3 fechas.
+2. Simbolo G. detecta como numero 6.
+3. Limpiar factura. Obtener los dos colores que se repiten con mayor frecuencia y sustituir los que no se adaptan al
+valor mas alto. Ej.: negro y blanco. Gris sustituir por blanco. 
+4. Agregar progress bar al descargar archivos.
