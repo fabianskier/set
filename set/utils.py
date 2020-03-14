@@ -35,11 +35,13 @@ class Utils():
             with zipfile.ZipFile(x, 'r') as zip_ref:
                 zip_ref.extractall(destiny)
             read_files = sorted(
-                glob.glob(setting.root+setting.slash+setting.mode[1]+setting.slash+'*.txt'))
-            file = os.path.join(setting.root+setting.slash+setting.mode[1]+setting.slash, "data.csv")
+                glob.glob(setting.root + '/tmp/'+'*.txt'))
+            file = os.path.join(setting.root + '/assets/ruc/', "ruc.csv")
             with open(file, "wb") as outfile:
                 for f in read_files:
                     with open(f, "rb") as infile:
                         outfile.write(infile.read())
-            for file in glob.glob(setting.root+setting.slash+setting.mode[1]+setting.slash+'ruc*.txt'):
+            for file in glob.glob(setting.root + '/tmp/'+'ruc*.txt'):
+                os.remove(file)
+        for file in glob.glob(setting.root + '/tmp/'+'ruc*.zip'):
                 os.remove(file)
