@@ -9,7 +9,7 @@ class Init():
                                 'tmp': str(Path.cwd().joinpath(Path("tmp"))) + "/",
                                 'assets': str(Path.cwd().joinpath(Path("assets"))) + "/",
                                 'receipts': str(Path.cwd().joinpath(Path("assets")).joinpath(Path("receipts"))) + "/",
-                                'rucs': str(Path.cwd().joinpath(Path("assets")).joinpath(Path("receipts")).joinpath(Path("rucs"))) + "/", 
+                                'rucs': str(Path.cwd().joinpath(Path("assets")).joinpath(Path("rucs"))) + "/", 
                                 'ruc_url': 'https://www.set.gov.py/rest/contents/download/collaboration/sites/PARAGUAY-SET/documents/informes-periodicos/ruc/',
                                 'ruc_extension': 'ruc.zip',
                                 'periodo': '2020'
