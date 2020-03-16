@@ -1,4 +1,5 @@
 import os
+import sys
 import requests
 import zipfile
 import glob
@@ -13,6 +14,7 @@ class Utils():
         for i in range(0, 10):
             filename = setting.extension[:3] + str(i) + setting.extension[3:]
             url = setting.url + filename
+            print(url)
             try:
                 r = requests.get(url)
                 r.raise_for_status()
