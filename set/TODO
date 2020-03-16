@@ -4,3 +4,5 @@ Problemas
 3. Limpiar factura. Obtener los dos colores que se repiten con mayor frecuencia y sustituir los que no se adaptan al
 valor mas alto. Ej.: negro y blanco. Gris sustituir por blanco. 
 4. Agregar progress bar al descargar archivos.
+5. Crear set.ini al comienzo
+6. Crear directorios base (assets, tmp, receipts,etc)
