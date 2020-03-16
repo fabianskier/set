@@ -3,17 +3,20 @@ import sys
 import requests
 import zipfile
 import glob
-from setting import Setting
+import configparser
 
 
 class Utils():
+    def __init__(self):
+        self.config = configparser.ConfigParser()
+        self.config.read("set.ini")
+        
     def download(self, url, path):
-        setting = Setting()
         if not os.path.exists(path):
             os.makedirs(path)
         for i in range(0, 10):
-            filename = setting.extension[:3] + str(i) + setting.extension[3:]
-            url = setting.url + filename
+            filename = self.config['default']['ruc_extension'][:3] + str(i) + self.config['default']['ruc_extension'][3:]
+            url = self.config['default']['ruc_url'] + filename
             print(url)
             try:
                 r = requests.get(url)
@@ -29,21 +32,21 @@ class Utils():
                 sys.exit(1)
 
     def extract(self, origin, destiny):
-        setting = Setting()
+        zip_files = []
         for file in os.listdir(origin):
             if file.endswith(".zip"):
-                setting.zip_files.append(os.path.join(origin, file))
-        for x in setting.zip_files:
+                zip_files.append(os.path.join(origin, file))
+        for x in zip_files:
             with zipfile.ZipFile(x, 'r') as zip_ref:
                 zip_ref.extractall(destiny)
             read_files = sorted(
-                glob.glob(setting.root + '/tmp/'+'*.txt'))
-            file = os.path.join(setting.root + '/assets/ruc/', "ruc.csv")
+                glob.glob(self.config['default']['tmp']+'*.txt'))
+            file = os.path.join(self.config['default']['rucs'], "ruc.csv")
             with open(file, "wb") as outfile:
                 for f in read_files:
                     with open(f, "rb") as infile:
                         outfile.write(infile.read())
-            for file in glob.glob(setting.root + '/tmp/'+'ruc*.txt'):
+            for file in glob.glob(self.config['default']['tmp']+'ruc*.txt'):
                 os.remove(file)
-        for file in glob.glob(setting.root + '/tmp/'+'ruc*.zip'):
+        for file in glob.glob(self.config['default']['tmp']+'ruc*.zip'):
                 os.remove(file)

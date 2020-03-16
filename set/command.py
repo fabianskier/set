@@ -14,7 +14,7 @@ class Command():
 
     def g(self):
         utils = Utils()
-        utils.download(self.config['default']['ruc_url'], self.config['default']['tmp'])
+        #utils.download(self.config['default']['ruc_url'], self.config['default']['tmp'])
         utils.extract(self.config['default']['tmp'], self.config['default']['tmp'])
     
     def e(self):
@@ -27,6 +27,7 @@ class Command():
                     files = os.listdir(self.config['default']['receipts'] + self.config['default']['periodo'] + '/' + ('%02d' % month))
                     for file in files:
                         if fnmatch(file, '*.jpg'):
+                            print(directory + '/' + file)
                             a = setpy.invoice_to_text(directory + '/' + file)
                             writer.writerow(a)
     

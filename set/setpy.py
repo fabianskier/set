@@ -36,7 +36,7 @@ class SetPy():
         r_fecha = ''
         r_total = ''
 
-        f = os.getcwd() + '/assets/ruc/ruc.csv'
+        f = os.getcwd() + '/assets/rucs/ruc.csv'
         with open(f, 'rt' ) as f:
             reader = csv.reader(f, delimiter='|')
             for line in text.splitlines():
@@ -51,9 +51,15 @@ class SetPy():
                             else:
                                 razon_social = 'RAZON SOCIAL: '
                 if re.findall(timbrado_pattern, line):
-                    r_timbrado = re.findall('\d+', line)[0]
+                    try:
+                        r_timbrado = re.findall('\d+', line)[0]
+                    except:
+                        print('No se encontro TIMBRADO')
                 if re.findall(factura_pattern, line):
-                    r_documento = re.findall(factura_pattern, line)[0]
+                    try:
+                        r_documento = re.findall(factura_pattern, line)[0]
+                    except:
+                        print('No se encontro DOCUMENTO')
                 if re.findall(fecha_pattern, line):
                     fp = parse(re.findall(fecha_pattern,line)[0], yearfirst=False, dayfirst=True)
                     l_fecha.append(fp)

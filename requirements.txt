@@ -2,3 +2,6 @@ pytesseract
 #scikit-image
 python-dateutil
 requests
+opencv-python
+numpy
+matplotlib
